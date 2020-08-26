@@ -79,12 +79,33 @@
     //
     // test if a specific row on this board contains a conflict
     hasRowConflictAt: function(rowIndex) {
-      return false; // fixme
+      // access the row which is an array
+      // if sum of all array values > 2, TRUE
+      console.log('hello at has row conflict');
+      var indexCheck = rowIndex - 1;
+      this.attributes[indexCheck]; // row one array [0,0,0,0]
+      console.log('this is the index check', this.attributes[indexCheck]);
+      var boardSize = this.attributes.n;
+      var sum = 0;
+      for (var i = 0; i < boardSize; i++) {
+        sum += this.attributes[indexCheck][i];
+      }
+      if (sum > 1) {
+        return true;
+      }
+      return false;
     },
 
     // test if any rows on this board contain conflicts
     hasAnyRowConflicts: function() {
-      return false; // fixme
+      var boardSize = this.attributes.n;
+      for (var i = 0; i < boardSize - 1; i++) {
+        console.log(this.hasRowConflictAt(i + 1));
+        if (this.hasRowConflictAt(i + 1)) {
+          return true;
+        }
+      }
+      return false;
     },
 
 
